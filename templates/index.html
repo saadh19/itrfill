@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ITRFill — File ITR in 10 Minutes | ₹299</title>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f0f4ff;color:#1a1a2e}
+    .topbar{background:#1e1b4b;color:white;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+    .logo{font-weight:800;font-size:20px;letter-spacing:-1px;color:white}
+    .logo span{color:#818cf8}
+    .tagline{font-size:13px;opacity:0.7}
+    .hero{background:linear-gradient(135deg,#1e1b4b 0%,#4338ca 60%,#6d28d9 100%);color:white;padding:52px 20px;text-align:center}
+    .hero h1{font-size:34px;font-weight:800;margin-bottom:12px;line-height:1.2}
+    .hero h1 span{color:#a5b4fc}
+    .hero p{font-size:16px;opacity:0.85;margin-bottom:28px;max-width:500px;margin-left:auto;margin-right:auto}
+    .badges{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+    .badge{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);border-radius:20px;padding:7px 16px;font-size:13px;font-weight:500}
+    .main{max-width:660px;margin:0 auto;padding:28px 16px}
+    .card{background:white;border-radius:18px;padding:26px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,0.07)}
+    .card-hdr{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+    .step-num{width:38px;height:38px;border-radius:50%;background:#ede9fe;color:#4f46e5;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0}
+    .step-num.done{background:#dcfce7;color:#16a34a}
+    .card-hdr h2{font-size:17px;font-weight:700}
+    .card-hdr p{font-size:13px;color:#666;margin-top:2px}
+    .upload-zone{border:2px dashed #c7d2fe;border-radius:14px;padding:38px 20px;text-align:center;cursor:pointer;transition:all .2s;background:#f8f7ff}
+    .upload-zone:hover,.upload-zone.drag{border-color:#4f46e5;background:#eef2ff}
+    .upload-zone .icon{font-size:44px;margin-bottom:12px}
+    .upload-zone h3{font-size:15px;font-weight:700;color:#1e1b4b;margin-bottom:4px}
+    .upload-zone p{font-size:13px;color:#9ca3af}
+    input[type=file]{display:none}
+    .btn{display:block;width:100%;padding:15px;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;transition:all .2s;margin-top:16px;letter-spacing:.2px}
+    .btn-primary{background:#4f46e5;color:white}
+    .btn-primary:hover{background:#4338ca;transform:translateY(-1px)}
+    .btn-primary:disabled{background:#c7d2fe;cursor:not-allowed;transform:none}
+    .btn-success{background:#16a34a;color:white}
+    .btn-success:hover{background:#15803d}
+    .result-row{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid #f3f4f6;font-size:14px}
+    .result-row:last-child{border-bottom:none}
+    .result-row .lbl{color:#6b7280}
+    .result-row .val{font-weight:700;color:#1a1a2e}
+    .highlight{border-radius:12px;padding:18px;margin-top:16px;text-align:center}
+    .highlight.refund{background:#f0fdf4;border:1.5px solid #86efac}
+    .highlight.due{background:#fef2f2;border:1.5px solid #fca5a5}
+    .highlight .amount{font-size:30px;font-weight:800}
+    .highlight.refund .amount{color:#16a34a}
+    .highlight.due .amount{color:#dc2626}
+    .highlight .lbl{font-size:13px;color:#6b7280;margin-bottom:5px}
+    .highlight .sub{font-size:12px;color:#9ca3af;margin-top:5px}
+    .rbadge{display:inline-block;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;background:#ede9fe;color:#4f46e5}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:0}
+    .form-grp{margin-bottom:16px}
+    label{font-size:13px;font-weight:600;color:#374151;display:block;margin-bottom:6px}
+    input[type=text],input[type=number],input[type=password]{width:100%;padding:12px 14px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:14px;transition:border-color .2s;background:#fafafa}
+    input:focus{outline:none;border-color:#4f46e5;background:white}
+    .hint{font-size:12px;color:#9ca3af;margin-top:4px}
+    .secure-note{background:#fef9c3;border:1px solid #fde047;border-radius:8px;padding:10px 14px;font-size:12px;color:#713f12;margin-bottom:16px;display:flex;gap:8px;align-items:flex-start}
+    .price-box{background:linear-gradient(135deg,#eef2ff,#f5f3ff);border:2px solid #c7d2fe;border-radius:14px;padding:22px;text-align:center;margin-bottom:18px}
+    .price-box .price{font-size:42px;font-weight:800;color:#4f46e5}
+    .price-box .was{font-size:14px;color:#9ca3af;text-decoration:line-through;margin-bottom:4px}
+    .price-feats{display:flex;flex-direction:column;gap:8px;margin-top:14px;text-align:left}
+    .price-feat{font-size:13px;color:#374151;display:flex;align-items:center;gap:9px}
+    .price-feat::before{content:"✓";color:#16a34a;font-weight:800;font-size:14px}
+    .hidden{display:none}
+    .loader{text-align:center;padding:28px}
+    .spinner{width:40px;height:40px;border:3px solid #e0e0e0;border-top-color:#4f46e5;border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 14px}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .loader p{font-size:14px;color:#6b7280}
+    .err{background:#fef2f2;border:1px solid #fca5a5;border-radius:10px;padding:12px 16px;font-size:13px;color:#dc2626;margin-top:12px}
+    .filing-status{border-radius:14px;padding:20px;margin-top:16px}
+    .filing-status.running{background:#eff6ff;border:1.5px solid #93c5fd}
+    .filing-status.success{background:#f0fdf4;border:1.5px solid #86efac}
+    .filing-status.otp{background:#fef9c3;border:1.5px solid #fde047}
+    .filing-status.error{background:#fef2f2;border:1.5px solid #fca5a5}
+    .step-track{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+    .step-track-item{display:flex;gap:12px;align-items:flex-start}
+    .step-track-item .n{width:26px;height:26px;border-radius:50%;background:#ede9fe;color:#4f46e5;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+    .step-track-item .t h4{font-size:14px;font-weight:700;color:#1a1a2e}
+    .step-track-item .t p{font-size:13px;color:#6b7280;margin-top:2px}
+    .trust{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;padding:18px;background:white;border-radius:14px;margin-bottom:20px}
+    .trust-item{display:flex;align-items:center;gap:7px;font-size:13px;color:#4b5563;font-weight:500}
+    .faq .faq-item{border-bottom:1px solid #f3f4f6;padding:14px 0}
+    .faq .faq-item:last-child{border-bottom:none}
+    .faq .faq-item h4{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:5px}
+    .faq .faq-item p{font-size:13px;color:#6b7280;line-height:1.7}
+    footer{text-align:center;padding:36px 16px;font-size:13px;color:#9ca3af}
+    footer a{color:#4f46e5;text-decoration:none}
+    .auto-badge{display:inline-block;background:#dcfce7;color:#15803d;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;margin-left:8px;vertical-align:middle}
+    .otp-instruction{background:#fef9c3;border:1.5px solid #fde047;border-radius:12px;padding:18px;margin-top:16px}
+    .otp-instruction h3{font-size:15px;font-weight:700;color:#713f12;margin-bottom:10px}
+    .otp-instruction p{font-size:13px;color:#713f12;line-height:1.6}
+    .otp-instruction .otp-steps{margin-top:10px;display:flex;flex-direction:column;gap:7px}
+    .otp-step{font-size:13px;color:#713f12;display:flex;gap:8px}
+    .otp-step span{font-weight:700}
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">ITR<span>Fill</span></div>
+  <div class="tagline">File ITR in 10 minutes · ₹299</div>
+</div>
+
+<div class="hero">
+  <h1>File your ITR in <span>10 minutes</span><br>AI does everything</h1>
+  <p>Upload Form 16 → AI reads it → Auto-files on IT portal → You just enter OTP</p>
+  <div class="badges">
+    <span class="badge">✓ AY 2025-26</span>
+    <span class="badge">✓ ITR-1 Salaried</span>
+    <span class="badge">✓ Gemini AI Powered</span>
+    <span class="badge">✓ Auto Portal Filing</span>
+    <span class="badge">✓ Max Refund</span>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="trust">
+    <div class="trust-item">🔒 256-bit Encrypted</div>
+    <div class="trust-item">🤖 Gemini AI</div>
+    <div class="trust-item">⚡ 10 Minutes</div>
+    <div class="trust-item">🏛️ Auto-files ITR</div>
+  </div>
+
+  <!-- STEP 1: Upload Form 16 -->
+  <div class="card" id="card-upload">
+    <div class="card-hdr">
+      <div class="step-num">1</div>
+      <div><h2>Upload your Form 16</h2><p>PDF from your employer — Part A & Part B</p></div>
+    </div>
+    <div class="upload-zone" id="upload-zone"
+         onclick="document.getElementById('fileInput').click()"
+         ondragover="event.preventDefault();this.classList.add('drag')"
+         ondragleave="this.classList.remove('drag')"
+         ondrop="handleDrop(event)">
+      <div class="icon">📄</div>
+      <h3 id="upload-title">Click to upload Form 16 PDF</h3>
+      <p>or drag and drop · Processed securely, never stored</p>
+    </div>
+    <input type="file" id="fileInput" accept=".pdf" onchange="handleFile(this)">
+    <div id="err-upload" class="err hidden"></div>
+    <button class="btn btn-primary" id="btn-analyse" onclick="uploadForm16()" disabled>
+      Analyse My Form 16 — Free Preview
+    </button>
+  </div>
+
+  <!-- Loading -->
+  <div class="card hidden" id="loading-1">
+    <div class="loader">
+      <div class="spinner"></div>
+      <p>Gemini AI is reading your Form 16...<br><small>Takes 15–25 seconds</small></p>
+    </div>
+  </div>
+
+  <!-- Tax Summary -->
+  <div class="card hidden" id="card-summary">
+    <div class="card-hdr">
+      <div class="step-num done">✓</div>
+      <div><h2>Your Tax Summary</h2><p>AI extracted all details automatically</p></div>
+    </div>
+    <div class="result-row"><span class="lbl">Name</span><span class="val" id="r-name">—</span></div>
+    <div class="result-row"><span class="lbl">PAN Number</span><span class="val" id="r-pan">—</span></div>
+    <div class="result-row"><span class="lbl">Employer</span><span class="val" id="r-emp">—</span></div>
+    <div class="result-row"><span class="lbl">Gross Salary</span><span class="val" id="r-sal">—</span></div>
+    <div class="result-row"><span class="lbl">TDS Already Paid</span><span class="val" id="r-tds">—</span></div>
+    <div class="result-row"><span class="lbl">Old Regime Tax</span><span class="val" id="r-old">—</span></div>
+    <div class="result-row"><span class="lbl">New Regime Tax</span><span class="val" id="r-new">—</span></div>
+    <div class="result-row"><span class="lbl">Best Option</span><span class="val"><span class="rbadge" id="r-rec">—</span></span></div>
+    <div class="highlight refund" id="refund-box">
+      <div class="lbl">Your Expected</div>
+      <div class="amount" id="r-refund">—</div>
+      <div class="sub" id="r-refund-sub">—</div>
+    </div>
+  </div>
+
+  <!-- STEP 2: Extra Details + IT Portal Credentials -->
+  <div class="card hidden" id="card-questions">
+    <div class="card-hdr">
+      <div class="step-num">2</div>
+      <div><h2>Complete Your Details</h2><p>Deductions + IT portal for auto-filing</p></div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-grp">
+        <label>Monthly Rent Paid (₹)</label>
+        <input type="number" id="q-rent" value="0" min="0" placeholder="0">
+        <div class="hint">0 if you don't pay rent</div>
+      </div>
+      <div class="form-grp">
+        <label>Home Loan Interest (₹/yr)</label>
+        <input type="number" id="q-homeloan" value="0" min="0" placeholder="0">
+        <div class="hint">Section 24b</div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-grp">
+        <label>Other Income (₹)</label>
+        <input type="number" id="q-otherincome" value="0" min="0" placeholder="0">
+        <div class="hint">FD interest, freelance</div>
+      </div>
+      <div class="form-grp">
+        <label>Extra 80C (₹)</label>
+        <input type="number" id="q-80c" value="0" min="0" placeholder="0">
+        <div class="hint">PPF, ELSS beyond Form 16</div>
+      </div>
+    </div>
+    <div class="form-grp">
+      <label>Bank Account + IFSC (for refund)</label>
+      <input type="text" id="q-bank" placeholder="e.g. 1234567890 SBIN0001234">
+      <div class="hint">Account number space IFSC code</div>
+    </div>
+
+    <hr style="border:none;border-top:1.5px dashed #e5e7eb;margin:20px 0">
+
+    <div class="card-hdr" style="margin-bottom:14px">
+      <div style="font-size:22px">🤖</div>
+      <div>
+        <h2 style="font-size:16px">Auto-file on IT Portal <span class="auto-badge">NEW</span></h2>
+        <p>We log in and file for you — you only enter OTP</p>
+      </div>
+    </div>
+
+    <div class="secure-note">
+      🔐 Your IT portal password is encrypted with AES-256 before use and deleted immediately after filing. We never store it.
+    </div>
+
+    <div class="form-grp">
+      <label>IT Portal Password (incometax.gov.in)</label>
+      <input type="password" id="q-itpass" placeholder="Your IT portal login password">
+      <div class="hint">Leave empty to skip auto-filing — you will upload XML manually instead</div>
+    </div>
+
+    <div id="err-questions" class="err hidden"></div>
+    <button class="btn btn-primary" onclick="showPayment()">Continue to Payment →</button>
+  </div>
+
+  <!-- STEP 3: Payment -->
+  <div class="card hidden" id="card-payment">
+    <div class="card-hdr">
+      <div class="step-num">3</div>
+      <div><h2>Complete Payment</h2><p>One-time · No hidden charges</p></div>
+    </div>
+    <div class="price-box">
+      <div class="was">₹999</div>
+      <div class="price">₹299</div>
+      <div style="font-size:13px;color:#6b7280;margin-top:4px">Launch price · Includes auto-filing</div>
+      <div class="price-feats">
+        <div class="price-feat">Gemini AI reads your Form 16 automatically</div>
+        <div class="price-feat">Old vs New regime — picks maximum refund</div>
+        <div class="price-feat">Auto-logs into IT portal and files for you</div>
+        <div class="price-feat">You only enter one OTP — done</div>
+        <div class="price-feat">ITR-V acknowledgement in 24 hours</div>
+      </div>
+    </div>
+    <div id="err-payment" class="err hidden"></div>
+    <button class="btn btn-primary" id="btn-pay" onclick="initiatePayment()">Pay ₹299 & File My ITR →</button>
+    <p style="font-size:12px;color:#9ca3af;text-align:center;margin-top:10px">🔒 Secured by Razorpay · UPI, Cards, NetBanking</p>
+  </div>
+
+  <!-- Loading 2 -->
+  <div class="card hidden" id="loading-2">
+    <div class="loader">
+      <div class="spinner"></div>
+      <p id="loading-2-text">Generating your ITR and opening IT portal...<br><small>This takes 30–60 seconds</small></p>
+    </div>
+  </div>
+
+  <!-- STEP 4: Result -->
+  <div class="card hidden" id="card-result">
+    <div class="card-hdr">
+      <div class="step-num done">✓</div>
+      <div><h2>Almost Done! 🎉</h2><p>Just one OTP needed to complete filing</p></div>
+    </div>
+
+    <div class="highlight refund" id="final-box">
+      <div class="lbl">Your Refund / Tax Due</div>
+      <div class="amount" id="final-amount">—</div>
+      <div class="sub" id="final-sub">—</div>
+    </div>
+
+    <!-- Auto filing status -->
+    <div id="filing-status-box" class="filing-status running hidden">
+      <div style="font-weight:700;font-size:15px;margin-bottom:8px" id="filing-status-title">
+        🤖 Auto-filing in progress...
+      </div>
+      <div style="font-size:13px;color:#1e40af" id="filing-status-msg">
+        Opening IT portal and logging in...
+      </div>
+    </div>
+
+    <!-- OTP instruction (shown when bot reaches OTP step) -->
+    <div id="otp-box" class="otp-instruction hidden">
+      <h3>⚡ One last step — Enter OTP</h3>
+      <p>We have filled everything and uploaded your ITR. The portal is waiting for your Aadhaar OTP to verify.</p>
+      <div class="otp-steps">
+        <div class="otp-step"><span>1.</span> Open incometax.gov.in in your browser</div>
+        <div class="otp-step"><span>2.</span> You will see the OTP entry screen already open</div>
+        <div class="otp-step"><span>3.</span> Enter the 6-digit OTP sent to your Aadhaar mobile</div>
+        <div class="otp-step"><span>4.</span> Click Submit — your ITR is filed ✓</div>
+      </div>
+    </div>
+
+    <!-- Manual filing steps (shown if user skipped IT password) -->
+    <div id="manual-steps" class="hidden" style="margin-top:16px">
+      <div style="font-weight:700;font-size:15px;margin-bottom:12px">📋 Upload XML manually — 3 minutes</div>
+      <div class="step-track">
+        <div class="step-track-item"><div class="n">1</div><div class="t"><h4>Download XML below</h4><p>Click the green button</p></div></div>
+        <div class="step-track-item"><div class="n">2</div><div class="t"><h4>Go to incometax.gov.in → Login</h4><p>Use your PAN and password</p></div></div>
+        <div class="step-track-item"><div class="n">3</div><div class="t"><h4>e-File → ITR → Upload XML</h4><p>Select AY 2025-26, ITR-1, upload file</p></div></div>
+        <div class="step-track-item"><div class="n">4</div><div class="t"><h4>Verify with Aadhaar OTP</h4><p>Enter OTP → ITR Filed ✓</p></div></div>
+      </div>
+    </div>
+
+    <button class="btn btn-success" id="btn-download" onclick="downloadXML()" style="margin-top:16px">
+      ⬇ Download ITR-1 XML File
+    </button>
+    <p style="font-size:12px;color:#9ca3af;text-align:center;margin-top:10px">File before July 31, 2025 to avoid ₹5,000 penalty</p>
+  </div>
+
+  <!-- FAQ -->
+  <div class="card">
+    <h2 style="margin-bottom:18px;font-size:17px">Frequently Asked Questions</h2>
+    <div class="faq">
+      <div class="faq-item">
+        <h4>Is my IT portal password safe?</h4>
+        <p>Yes. Your password is encrypted with AES-256 encryption the moment you enter it. It is used only once to log in and file your ITR, then deleted immediately. It is never stored in any database.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Why do I still need to enter an OTP?</h4>
+        <p>The Income Tax Department requires Aadhaar OTP verification as the final step. This is a government security requirement. Only the OTP can be sent to your phone — no bot can receive it. Everything else is automated.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What if I don't want to give my IT portal password?</h4>
+        <p>No problem. Leave the password field empty. We will generate your ITR-1 XML file and you can upload it manually on incometax.gov.in — takes about 3 minutes.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Who is this for?</h4>
+        <p>Salaried employees with a single employer filing ITR-1. If you have business income, capital gains, or multiple employers, you need ITR-2 or ITR-3 — consult a CA.</p>
+      </div>
+      <div class="faq-item">
+        <h4>When does my refund arrive?</h4>
+        <p>Typically 15–45 days after filing. The IT department processes refunds and credits directly to your bank account linked with PAN.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2025 ITRFill · Built with ❤️ in India · Powered by Gemini AI</p>
+  <p style="margin-top:8px"><a href="#">Privacy Policy</a> · <a href="#">Refund Policy</a> · <a href="#">Contact</a></p>
+  <p style="margin-top:8px;color:#d1d5db">ITRFill assists with ITR-1 preparation. Always review your return before filing.</p>
+</footer>
+
+<script>
+const RAZORPAY_KEY = "{{ razorpay_key }}";
+let uploadedFilePath = '';
+let xmlFilePath = '';
+let jobId = '';
+let autoFiling = false;
+let statusInterval = null;
+
+function fmt(n){ return '₹' + Number(n).toLocaleString('en-IN'); }
+function show(id){ document.getElementById(id).classList.remove('hidden'); }
+function hide(id){ document.getElementById(id).classList.add('hidden'); }
+function showErr(id, msg){ const e=document.getElementById(id); e.textContent=msg; e.classList.remove('hidden'); }
+function hideErr(id){ document.getElementById(id).classList.add('hidden'); }
+
+function handleDrop(e){
+  e.preventDefault();
+  document.getElementById('upload-zone').classList.remove('drag');
+  const files = e.dataTransfer.files;
+  if(files.length > 0 && files[0].type === 'application/pdf'){
+    document.getElementById('fileInput').files = files;
+    handleFile(document.getElementById('fileInput'));
+  }
+}
+
+function handleFile(input){
+  if(input.files.length > 0){
+    document.getElementById('upload-title').textContent = '📄 ' + input.files[0].name;
+    document.getElementById('btn-analyse').disabled = false;
+    hideErr('err-upload');
+  }
+}
+
+async function uploadForm16(){
+  const fi = document.getElementById('fileInput');
+  if(!fi.files.length) return;
+  hide('card-upload');
+  show('loading-1');
+  const fd = new FormData();
+  fd.append('form16', fi.files[0]);
+  try{
+    const res = await fetch('/upload', {method:'POST', body:fd});
+    const data = await res.json();
+    hide('loading-1');
+    if(data.error){ show('card-upload'); showErr('err-upload','Error: '+data.error); return; }
+    uploadedFilePath = data.form16_path;
+    document.getElementById('r-name').textContent = data.employee_name||'—';
+    document.getElementById('r-pan').textContent = data.pan||'—';
+    document.getElementById('r-emp').textContent = data.employer_name||'—';
+    document.getElementById('r-sal').textContent = fmt(data.gross_salary);
+    document.getElementById('r-tds').textContent = fmt(data.tds_paid);
+    document.getElementById('r-old').textContent = fmt(data.old_regime_tax);
+    document.getElementById('r-new').textContent = fmt(data.new_regime_tax);
+    document.getElementById('r-rec').textContent = data.recommended.toUpperCase()+' REGIME';
+    const refund = data.recommended==='old' ? data.old_refund : data.new_refund;
+    const rb = document.getElementById('refund-box');
+    if(refund >= 0){
+      document.getElementById('r-refund').textContent = fmt(refund);
+      document.getElementById('r-refund-sub').textContent = 'REFUND — IT Dept pays you back';
+      rb.className = 'highlight refund';
+    } else {
+      document.getElementById('r-refund').textContent = fmt(Math.abs(refund));
+      document.getElementById('r-refund-sub').textContent = 'TAX DUE — Pay this before filing';
+      rb.className = 'highlight due';
+    }
+    show('card-summary');
+    show('card-questions');
+  } catch(err){
+    hide('loading-1'); show('card-upload');
+    showErr('err-upload','Something went wrong. Please try again.');
+  }
+}
+
+function showPayment(){
+  const bank = document.getElementById('q-bank').value.trim();
+  if(!bank || bank.split(' ').length < 2){
+    showErr('err-questions','Please enter your bank account number and IFSC code');
+    return;
+  }
+  hideErr('err-questions');
+  show('card-payment');
+  document.getElementById('card-payment').scrollIntoView({behavior:'smooth'});
+}
+
+async function initiatePayment(){
+  const btn = document.getElementById('btn-pay');
+  btn.disabled = true;
+  btn.textContent = 'Opening payment...';
+  hideErr('err-payment');
+  try{
+    const res = await fetch('/create-order', {method:'POST'});
+    const order = await res.json();
+    if(order.error){ showErr('err-payment', order.error); btn.disabled=false; btn.textContent='Pay ₹299 & File My ITR →'; return; }
+    const options = {
+      key: RAZORPAY_KEY,
+      amount: order.amount,
+      currency: 'INR',
+      name: 'ITRFill',
+      description: 'ITR-1 Auto-Filing Service',
+      order_id: order.order_id,
+      handler: async function(response){
+        const vRes = await fetch('/verify-payment',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(response)});
+        const vData = await vRes.json();
+        if(vData.verified){ await generateAndFile(); }
+        else { showErr('err-payment','Payment verification failed.'); btn.disabled=false; btn.textContent='Pay ₹299 & File My ITR →'; }
+      },
+      prefill: {name: document.getElementById('r-name').textContent},
+      theme: {color:'#4f46e5'},
+      modal: {ondismiss: function(){ btn.disabled=false; btn.textContent='Pay ₹299 & File My ITR →'; }}
+    };
+    new Razorpay(options).open();
+  } catch(err){
+    showErr('err-payment','Could not initiate payment. Please try again.');
+    btn.disabled=false; btn.textContent='Pay ₹299 & File My ITR →';
+  }
+}
+
+async function generateAndFile(){
+  hide('card-payment');
+  hide('card-questions');
+  hide('card-summary');
+  show('loading-2');
+  const itPass = document.getElementById('q-itpass').value;
+  const payload = {
+    form16_path: uploadedFilePath,
+    monthly_rent: document.getElementById('q-rent').value||0,
+    home_loan_interest: document.getElementById('q-homeloan').value||0,
+    other_income: document.getElementById('q-otherincome').value||0,
+    extra_80c: document.getElementById('q-80c').value||0,
+    bank_details: document.getElementById('q-bank').value.trim(),
+    it_password: itPass
+  };
+  try{
+    const res = await fetch('/generate-and-file',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    const data = await res.json();
+    hide('loading-2');
+    if(data.error){ show('card-payment'); showErr('err-payment','Error: '+data.error); return; }
+    xmlFilePath = data.xml_file;
+    jobId = data.job_id;
+    autoFiling = data.auto_filing;
+    const fb = document.getElementById('final-box');
+    if(data.refund >= 0){
+      document.getElementById('final-amount').textContent = fmt(data.refund);
+      document.getElementById('final-sub').textContent = 'REFUND coming to your bank in 15–45 days';
+      fb.className = 'highlight refund';
+    } else {
+      document.getElementById('final-amount').textContent = fmt(Math.abs(data.refund));
+      document.getElementById('final-sub').textContent = 'TAX DUE — Pay on IT portal before filing';
+      fb.className = 'highlight due';
+    }
+    show('card-result');
+    document.getElementById('card-result').scrollIntoView({behavior:'smooth'});
+    if(autoFiling){
+      show('filing-status-box');
+      startStatusPolling();
+    } else {
+      show('manual-steps');
+    }
+  } catch(err){
+    hide('loading-2'); show('card-payment');
+    showErr('err-payment','Something went wrong. Please try again.');
+  }
+}
+
+function startStatusPolling(){
+  statusInterval = setInterval(async ()=>{
+    try{
+      const res = await fetch('/filing-status/'+jobId);
+      const status = await res.json();
+      updateFilingStatus(status);
+      if(status.status === 'otp_required_verification' || status.status === 'error' || status.status === 'otp_required_login'){
+        clearInterval(statusInterval);
+      }
+    } catch(e){ /* ignore */ }
+  }, 3000);
+}
+
+const stepMessages = {
+  'initializing': 'Preparing to open IT portal...',
+  'opening_portal': 'Opening incometax.gov.in...',
+  'clicking_login': 'Clicking the login button...',
+  'entering_pan': 'Entering your PAN number...',
+  'entering_password': 'Entering your password securely...',
+  'logged_in': 'Logged in successfully!',
+  'navigating_efile': 'Going to e-File section...',
+  'selecting_ay': 'Selecting Assessment Year 2025-26...',
+  'uploading_xml': 'Uploading your ITR-1 XML...',
+  'verification': 'Proceeding to verification...',
+  'awaiting_otp': 'ITR uploaded! Waiting for your OTP...'
+};
+
+function updateFilingStatus(status){
+  const box = document.getElementById('filing-status-box');
+  const title = document.getElementById('filing-status-title');
+  const msg = document.getElementById('filing-status-msg');
+  const stepMsg = stepMessages[status.step] || status.step || '';
+  if(status.status === 'running' || status.status === 'starting'){
+    box.className = 'filing-status running';
+    title.textContent = '🤖 Auto-filing in progress...';
+    msg.textContent = stepMsg;
+  } else if(status.status === 'otp_required_verification'){
+    box.className = 'filing-status otp';
+    title.textContent = '⚡ Almost done — Enter OTP now!';
+    msg.textContent = 'Everything is uploaded. Just enter the OTP on the portal.';
+    show('otp-box');
+    show('btn-download');
+  } else if(status.status === 'otp_required_login'){
+    box.className = 'filing-status otp';
+    title.textContent = '⚠️ Login OTP required';
+    msg.textContent = 'IT portal sent an OTP for login. Please log in manually and upload the XML.';
+    show('manual-steps');
+  } else if(status.status === 'error'){
+    box.className = 'filing-status error';
+    title.textContent = '⚠️ Auto-filing encountered an issue';
+    msg.textContent = 'Please upload the XML manually using the steps below.';
+    show('manual-steps');
+  }
+}
+
+function downloadXML(){
+  if(xmlFilePath) window.location.href = '/download/'+encodeURIComponent(xmlFilePath);
+}
+</script>
+</body>
+</html>
