@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Refund Policy — ITRFill</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f0f4ff;color:#1a1a2e}
+    .topbar{background:#1e1b4b;color:white;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+    .logo{font-weight:800;font-size:20px;letter-spacing:-1px;color:white;text-decoration:none}
+    .logo span{color:#818cf8}
+    .nav-links{display:flex;gap:20px}
+    .nav-links a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:14px}
+    .nav-links a:hover{color:white}
+    .hero{background:linear-gradient(135deg,#1e1b4b 0%,#4338ca 60%,#6d28d9 100%);color:white;padding:52px 20px;text-align:center}
+    .hero h1{font-size:32px;font-weight:800;margin-bottom:10px}
+    .hero p{font-size:15px;opacity:0.85}
+    .main{max-width:800px;margin:0 auto;padding:40px 16px}
+    .card{background:white;border-radius:18px;padding:36px;box-shadow:0 2px 8px rgba(0,0,0,0.07);margin-bottom:20px}
+    .card h2{font-size:20px;font-weight:700;color:#1e1b4b;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid #f0f4ff}
+    .card h3{font-size:16px;font-weight:700;color:#1e1b4b;margin:20px 0 8px}
+    .card p{font-size:14px;color:#4b5563;line-height:1.8;margin-bottom:12px}
+    .card ul{margin:8px 0 12px 20px}
+    .card ul li{font-size:14px;color:#4b5563;line-height:1.8;margin-bottom:6px}
+    .highlight-green{background:#f0fdf4;border-left:4px solid #16a34a;border-radius:0 10px 10px 0;padding:14px 18px;margin:16px 0}
+    .highlight-green p{color:#15803d;margin:0;font-weight:500}
+    .highlight-red{background:#fef2f2;border-left:4px solid #dc2626;border-radius:0 10px 10px 0;padding:14px 18px;margin:16px 0}
+    .highlight-red p{color:#dc2626;margin:0;font-weight:500}
+    .highlight-blue{background:#eff6ff;border-left:4px solid #3b82f6;border-radius:0 10px 10px 0;padding:14px 18px;margin:16px 0}
+    .highlight-blue p{color:#1d4ed8;margin:0;font-weight:500}
+    .scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+    @media(max-width:600px){.scenario-grid{grid-template-columns:1fr}}
+    .scenario{border-radius:12px;padding:18px}
+    .scenario.eligible{background:#f0fdf4;border:1.5px solid #86efac}
+    .scenario.not-eligible{background:#fef2f2;border:1.5px solid #fca5a5}
+    .scenario h4{font-size:14px;font-weight:700;margin-bottom:8px}
+    .scenario.eligible h4{color:#15803d}
+    .scenario.not-eligible h4{color:#dc2626}
+    .scenario ul{margin:0 0 0 16px;padding:0}
+    .scenario ul li{font-size:13px;line-height:1.8}
+    .scenario.eligible ul li{color:#15803d}
+    .scenario.not-eligible ul li{color:#dc2626}
+    .steps{display:flex;flex-direction:column;gap:14px;margin:16px 0}
+    .step{display:flex;gap:14px;align-items:flex-start}
+    .step-num{width:32px;height:32px;border-radius:50%;background:#ede9fe;color:#4f46e5;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0}
+    .step-text h4{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:3px}
+    .step-text p{font-size:13px;color:#6b7280}
+    .btn-contact{display:inline-block;padding:12px 28px;background:#4f46e5;color:white;border-radius:10px;font-size:14px;font-weight:600;text-decoration:none;margin-top:16px}
+    .btn-contact:hover{background:#4338ca}
+    footer{text-align:center;padding:32px 16px;font-size:13px;color:#9ca3af}
+    footer a{color:#4f46e5;text-decoration:none}
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="/" class="logo">ITR<span>Fill</span></a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/contact">Contact</a>
+    <a href="/privacy">Privacy</a>
+  </div>
+</div>
+
+<div class="hero">
+  <h1>Refund Policy</h1>
+  <p>Last updated: June 1, 2025 &nbsp;·&nbsp; We believe in fair and transparent refunds.</p>
+</div>
+
+<div class="main">
+
+  <!-- Summary -->
+  <div class="card">
+    <h2>Summary</h2>
+    <p>ITRFill charges ₹299 per ITR-1 filing. Since we provide a digital service that involves AI processing and immediate delivery of your ITR XML file, our refund policy is specific about when refunds are applicable.</p>
+    <div class="highlight-blue">
+      <p>If there is a technical failure on our end that prevents you from getting your ITR XML, you are entitled to a full refund. No questions asked.</p>
+    </div>
+  </div>
+
+  <!-- Eligible vs not eligible -->
+  <div class="card">
+    <h2>When You Are Eligible for a Refund</h2>
+    <div class="scenario-grid">
+      <div class="scenario eligible">
+        <h4>✅ Eligible for refund</h4>
+        <ul>
+          <li>Payment deducted but XML not generated</li>
+          <li>AI failed to read your Form 16</li>
+          <li>Technical error on our server</li>
+          <li>Duplicate payment charged</li>
+          <li>Service was unavailable at time of payment</li>
+          <li>Wrong amount charged</li>
+        </ul>
+      </div>
+      <div class="scenario not-eligible">
+        <h4>❌ Not eligible for refund</h4>
+        <ul>
+          <li>XML generated and downloaded successfully</li>
+          <li>Changed your mind after receiving XML</li>
+          <li>Uploaded wrong Form 16 yourself</li>
+          <li>ITR rejected by IT dept due to your error</li>
+          <li>Requesting refund after 7 days</li>
+          <li>Dissatisfied with tax amount calculated</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Special cases -->
+  <div class="card">
+    <h2>Special Cases</h2>
+    <h3>Payment deducted but XML not received</h3>
+    <p>This is the most common issue. If your payment was successful but you did not receive the XML download, contact us immediately with your Razorpay payment ID. We will either generate your XML manually or process a full refund within 24 hours.</p>
+
+    <h3>Form 16 not read correctly by AI</h3>
+    <p>If our AI extracted incorrect data from your Form 16 and you noticed before downloading, contact us. We will manually review and correct your filing at no extra charge. If correction is not possible, a full refund will be issued.</p>
+
+    <h3>Duplicate payment</h3>
+    <p>If you were charged twice for the same filing, we will refund the duplicate amount within 3 working days after verification.</p>
+
+    <div class="highlight-green">
+      <p>When in doubt, contact us. We would rather give you a refund than have an unhappy customer.</p>
+    </div>
+  </div>
+
+  <!-- How to request -->
+  <div class="card">
+    <h2>How to Request a Refund</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <h4>Contact us within 7 days</h4>
+          <p>Email us or WhatsApp us within 7 days of your payment date.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <h4>Provide your payment details</h4>
+          <p>Share your Razorpay Payment ID (starts with pay_) and the email used during payment.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <h4>Describe the issue</h4>
+          <p>Tell us what went wrong. A screenshot of the error helps us resolve faster.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-text">
+          <h4>We verify and process</h4>
+          <p>We verify within 24 hours and process eligible refunds within 5-7 working days to your original payment method.</p>
+        </div>
+      </div>
+    </div>
+    <!-- REPLACE: your@email.com and WhatsApp number -->
+    <p style="margin-top:16px;font-size:14px;color:#4b5563">
+      <strong>Email:</strong> your@email.com<br>
+      <strong>WhatsApp:</strong> +91 XXXXXXXXXX<br>
+      <strong>Subject line:</strong> Refund Request — [Your PAN]
+    </p>
+    <a href="/contact" class="btn-contact">Contact Support →</a>
+  </div>
+
+  <!-- Timeline -->
+  <div class="card">
+    <h2>Refund Timeline</h2>
+    <ul>
+      <li><strong>Refund request received:</strong> We acknowledge within 24 hours</li>
+      <li><strong>Verification:</strong> 1-2 working days</li>
+      <li><strong>Refund initiated:</strong> Within 3 working days of approval</li>
+      <li><strong>Credit to your account:</strong> 5-7 working days (depends on your bank)</li>
+      <li><strong>UPI refunds:</strong> Usually within 24-48 hours</li>
+      <li><strong>Card refunds:</strong> 5-7 working days</li>
+      <li><strong>Net banking:</strong> 3-5 working days</li>
+    </ul>
+    <div class="highlight-blue">
+      <p>Refunds are processed to the original payment method only. We cannot refund to a different account.</p>
+    </div>
+  </div>
+
+  <!-- IT dept refund note -->
+  <div class="card">
+    <h2>Important Note About Income Tax Refunds</h2>
+    <p>The refund mentioned in this policy refers to our ₹299 service fee only.</p>
+    <p>The income tax refund you see in your ITR (e.g. ₹19,000 refund from IT department) is a separate matter handled entirely by the Income Tax Department of India. ITRFill has no control over when the IT department processes and credits your tax refund to your bank account.</p>
+    <div class="highlight-red">
+      <p>ITRFill cannot be held responsible for delays in income tax refunds from the IT department. For IT refund status, check incometax.gov.in.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2025 ITRFill · Built with ❤️ in India</p>
+  <p style="margin-top:8px"><a href="/privacy">Privacy Policy</a> · <a href="/refund">Refund Policy</a> · <a href="/contact">Contact</a></p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — ITRFill</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f0f4ff;color:#1a1a2e}
+    .topbar{background:#1e1b4b;color:white;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+    .logo{font-weight:800;font-size:20px;letter-spacing:-1px;color:white;text-decoration:none}
+    .logo span{color:#818cf8}
+    .hero{background:linear-gradient(135deg,#1e1b4b 0%,#4338ca 60%,#6d28d9 100%);color:white;padding:52px 20px;text-align:center}
+    .hero h1{font-size:32px;font-weight:800;margin-bottom:10px}
+    .hero p{font-size:16px;opacity:0.85;max-width:500px;margin:0 auto}
+    .main{max-width:800px;margin:0 auto;padding:40px 16px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:30px}
+    @media(max-width:600px){.grid{grid-template-columns:1fr}}
+    .card{background:white;border-radius:18px;padding:28px;box-shadow:0 2px 8px rgba(0,0,0,0.07);text-align:center;transition:transform 0.2s}
+    .card:hover{transform:translateY(-3px)}
+    .card .icon{font-size:40px;margin-bottom:14px}
+    .card h3{font-size:16px;font-weight:700;color:#1e1b4b;margin-bottom:6px}
+    .card p{font-size:13px;color:#6b7280;margin-bottom:16px;line-height:1.6}
+    .card a{display:inline-block;padding:10px 24px;border-radius:10px;font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s}
+    .btn-email{background:#4f46e5;color:white}
+    .btn-email:hover{background:#4338ca}
+    .btn-whatsapp{background:#25D366;color:white}
+    .btn-whatsapp:hover{background:#22bf5b}
+    .btn-discord{background:#5865F2;color:white}
+    .btn-discord:hover{background:#4752c4}
+    .contact-form{background:white;border-radius:18px;padding:32px;box-shadow:0 2px 8px rgba(0,0,0,0.07);margin-bottom:30px}
+    .contact-form h2{font-size:20px;font-weight:700;color:#1e1b4b;margin-bottom:6px}
+    .contact-form p{font-size:14px;color:#6b7280;margin-bottom:24px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+    @media(max-width:600px){.form-row{grid-template-columns:1fr}}
+    .form-grp{margin-bottom:16px}
+    label{font-size:13px;font-weight:600;color:#374151;display:block;margin-bottom:6px}
+    input,textarea,select{width:100%;padding:12px 14px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:14px;transition:border-color 0.2s;background:#fafafa;font-family:inherit}
+    input:focus,textarea:focus,select:focus{outline:none;border-color:#4f46e5;background:white}
+    textarea{resize:vertical;min-height:120px}
+    .btn-submit{display:block;width:100%;padding:14px;background:#4f46e5;color:white;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;transition:all 0.2s}
+    .btn-submit:hover{background:#4338ca;transform:translateY(-1px)}
+    .faq{background:white;border-radius:18px;padding:32px;box-shadow:0 2px 8px rgba(0,0,0,0.07);margin-bottom:30px}
+    .faq h2{font-size:20px;font-weight:700;color:#1e1b4b;margin-bottom:20px}
+    .faq-item{border-bottom:1px solid #f3f4f6;padding:14px 0}
+    .faq-item:last-child{border-bottom:none}
+    .faq-item h4{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:5px}
+    .faq-item p{font-size:13px;color:#6b7280;line-height:1.7}
+    .hours{background:white;border-radius:18px;padding:28px;box-shadow:0 2px 8px rgba(0,0,0,0.07);margin-bottom:30px}
+    .hours h2{font-size:18px;font-weight:700;color:#1e1b4b;margin-bottom:16px}
+    .hours-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f3f4f6;font-size:14px}
+    .hours-row:last-child{border-bottom:none}
+    .hours-row .day{color:#6b7280}
+    .hours-row .time{font-weight:600;color:#1a1a2e}
+    .badge-green{color:#16a34a;font-weight:700}
+    .success-msg{display:none;background:#f0fdf4;border:1.5px solid #86efac;border-radius:10px;padding:14px;font-size:14px;color:#16a34a;margin-top:12px;text-align:center}
+    footer{text-align:center;padding:32px 16px;font-size:13px;color:#9ca3af}
+    footer a{color:#4f46e5;text-decoration:none}
+    .nav-links{display:flex;gap:20px}
+    .nav-links a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:14px}
+    .nav-links a:hover{color:white}
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="/" class="logo">ITR<span>Fill</span></a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/refund">Refund</a>
+  </div>
+</div>
+
+<div class="hero">
+  <h1>Contact Us</h1>
+  <p>We are here to help. Reach us via any channel below — we respond within 24 hours.</p>
+</div>
+
+<div class="main">
+
+  <!-- Contact channels -->
+  <div class="grid">
+    <div class="card">
+      <div class="icon">✉️</div>
+      <h3>Email Support</h3>
+      <p>Send us your query and we will respond within 24 hours on working days.</p>
+      <!-- REPLACE: your@email.com -->
+      <a href="mailto:your@email.com" class="btn-email">Send Email</a>
+    </div>
+    <div class="card">
+      <div class="icon">💬</div>
+      <h3>WhatsApp Support</h3>
+      <p>Chat with us directly on WhatsApp for quick help with your ITR filing.</p>
+      <!-- REPLACE: 91XXXXXXXXXX with your WhatsApp number -->
+      <a href="https://wa.me/91XXXXXXXXXX?text=Hi%2C%20I%20need%20help%20with%20ITRFill" class="btn-whatsapp">Chat on WhatsApp</a>
+    </div>
+    <div class="card">
+      <div class="icon">🎮</div>
+      <h3>Discord Community</h3>
+      <p>Join our community for tips on ITR filing, tax saving and refund updates.</p>
+      <!-- REPLACE: YOUR_DISCORD_INVITE with your Discord invite link -->
+      <a href="https://discord.gg/YOUR_DISCORD_INVITE" class="btn-discord">Join Discord</a>
+    </div>
+    <div class="card">
+      <div class="icon">⏱️</div>
+      <h3>Response Time</h3>
+      <p>Email: within 24 hours<br>WhatsApp: within 2 hours<br>Discord: within 1 hour</p>
+      <span style="display:inline-block;background:#dcfce7;color:#16a34a;padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600">We are Online</span>
+    </div>
+  </div>
+
+  <!-- Contact form -->
+  <div class="contact-form">
+    <h2>Send us a message</h2>
+    <p>Fill the form below and we will get back to you within 24 hours.</p>
+    <div class="form-row">
+      <div class="form-grp">
+        <label>Your Name</label>
+        <input type="text" id="name" placeholder="Rahul Sharma">
+      </div>
+      <div class="form-grp">
+        <label>Email Address</label>
+        <input type="email" id="email" placeholder="rahul@gmail.com">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-grp">
+        <label>Mobile Number</label>
+        <input type="tel" id="mobile" placeholder="+91 98765 43210">
+      </div>
+      <div class="form-grp">
+        <label>Subject</label>
+        <select id="subject">
+          <option value="">Select a topic</option>
+          <option>Payment issue</option>
+          <option>XML download problem</option>
+          <option>Form 16 not reading correctly</option>
+          <option>Refund not received</option>
+          <option>Auto-filing issue</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-grp">
+      <label>Message</label>
+      <textarea id="message" placeholder="Describe your issue in detail..."></textarea>
+    </div>
+    <button class="btn-submit" onclick="submitForm()">Send Message →</button>
+    <div class="success-msg" id="success-msg">
+      ✅ Message sent successfully! We will get back to you within 24 hours.
+    </div>
+  </div>
+
+  <!-- Support hours -->
+  <div class="hours">
+    <h2>Support Hours</h2>
+    <div class="hours-row"><span class="day">Monday — Friday</span><span class="time badge-green">9:00 AM — 8:00 PM IST</span></div>
+    <div class="hours-row"><span class="day">Saturday</span><span class="time badge-green">10:00 AM — 6:00 PM IST</span></div>
+    <div class="hours-row"><span class="day">Sunday</span><span class="time" style="color:#dc2626">Closed</span></div>
+    <div class="hours-row"><span class="day">ITR Season (June — July)</span><span class="time badge-green">24/7 Support</span></div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq">
+    <h2>Common Questions</h2>
+    <div class="faq-item">
+      <h4>My payment was deducted but I did not get the XML file</h4>
+      <p>Please email us with your PAN number and payment ID from Razorpay. We will manually process your filing within 2 hours and send the XML to your email.</p>
+    </div>
+    <div class="faq-item">
+      <h4>The AI did not read my Form 16 correctly</h4>
+      <p>Some scanned or image-based Form 16 PDFs may not parse correctly. Please contact us on WhatsApp with your Form 16 and we will manually process it for you at no extra charge.</p>
+    </div>
+    <div class="faq-item">
+      <h4>I need a refund</h4>
+      <p>Please read our Refund Policy page. If you are eligible, email us with your order details and we will process the refund within 5-7 working days.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Can I file ITR for my family members?</h4>
+      <p>Yes. Each filing is a separate transaction. You can file for as many people as you want — each costs ₹299.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2025 ITRFill · Built with ❤️ in India</p>
+  <p style="margin-top:8px"><a href="/privacy">Privacy Policy</a> · <a href="/refund">Refund Policy</a> · <a href="/contact">Contact</a></p>
+</footer>
+
+<script>
+function submitForm() {
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+  if (!name || !email || !message) {
+    alert('Please fill in Name, Email and Message.');
+    return;
+  }
+  // REPLACE: Add your form submission logic here
+  // Options: EmailJS, Formspree, or your own backend
+  document.getElementById('success-msg').style.display = 'block';
+  document.getElementById('name').value = '';
+  document.getElementById('email').value = '';
+  document.getElementById('mobile').value = '';
+  document.getElementById('message').value = '';
+}
+</script>
+</body>
+</html>

@@ -28,6 +28,18 @@ RAZORPAY_KEY_ID = os.getenv("RAZORPAY_KEY_ID", "")
 RAZORPAY_KEY_SECRET = os.getenv("RAZORPAY_KEY_SECRET", "")
 PRICE_PAISE = 29900  # ₹299
 
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
+@app.route('/privacy')
+def privacy():
+    return render_template('privacy.html')
+
+@app.route('/refund')
+def refund():
+    return render_template('refund.html')
+
 # Simple encryption for IT portal password
 def encrypt_password(password):
     key = hashlib.sha256(app.secret_key.encode()).digest()
@@ -185,3 +197,4 @@ def download_xml(filename):
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=False)
+
